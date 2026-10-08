@@ -1,0 +1,19 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4'
+      - run: sudo apt-get update && sudo apt-get install -y libclang-dev
+      - run: cargo fmt --check
+      - run: cargo test --locked --all-features -- --include-ignored
+      - run: cargo clippy --locked --all-targets --all-features -- -D warnings
