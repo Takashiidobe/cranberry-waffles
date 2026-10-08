@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "cranberry_waffles",
+  "project_id": "bde0c3e7-295d-417e-a580-ea1088772c2a"
+}
